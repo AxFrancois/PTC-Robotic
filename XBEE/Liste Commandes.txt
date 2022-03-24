@@ -1,0 +1,5 @@
+stop\r\n
+droite\r\n
+gauche\r\n
+avant\r\n
+arriere\r\n
