@@ -6,10 +6,21 @@
     color:#000000;
 }
 :root {
-    --main-color: #FFE4E1;
-    --second-color:#FFDAB9 ;
-    --nav-color: #FFDAB9;
-    --main-text-color: white;
-    --padding-page: 10px;
+    /* Couleurs */
+    --color-main: #341FFF;
+    --color-second:#1034E8;
+    --color-A: #AB12FF;
+    --color-B: #6110E8;
+    --color-E: #3864E8;
+    --color-header: #FFDAB9;
+    --color-nav: #FFD009;
+
+    --color-main-text: white;
+    --color-header-text: white;
+
+    /* Height/Width */
     --header-height: 50px;
+
+    /* Padding/Margin */
+    --padding-page: 10px;
 }
