@@ -1,0 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style-type: none;
+    color:#000000;
+}
+:root {
+    --main-color: #FFE4E1;
+    --second-color:#FFDAB9 ;
+    --nav-color: #FFDAB9;
+    --main-text-color: white;
+    --padding-page: 10px;
+    --header-height: 50px;
+}
