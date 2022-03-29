@@ -2,13 +2,13 @@
 <header>
     <div class="titre">
         <h1>Robot</br></h1>
-        <p>Projet de Tronc Commun - 4 ETI</p>
+        <p class="pHeader">Projet de Tronc Commun - 4 ETI</p>
     </div>
     <nav class="navbar">
         <ul>
             <li>
-                <a href="#">
-                    Menu
+                <a href="/PHP/DISPLAY/accueil.php">
+                    Accueil
                 </a>
             </li>
             <li>
@@ -19,6 +19,11 @@
             <li>
                 <a href="#">
                     Commandes
+                </a>
+            </li>
+            <li>
+                <a href="/PHP/DISPLAY/connexion.php">
+                    Connexion
                 </a>
             </li>
         </ul>

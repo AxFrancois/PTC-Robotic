@@ -4,7 +4,7 @@
     
     $smarty = new Smarty();
 
-    $smarty->assign('title', 'IHM - Robot');
-    $smarty->assign('page', './accueil.tpl');
+    $smarty->assign('title', 'Robot - Connexion');
+    $smarty->assign('page', './connexion.tpl');
     $smarty->display('../../TPL/main_structure.tpl');
 ?>

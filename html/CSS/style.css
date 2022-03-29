@@ -19,7 +19,8 @@
     --color-header-text: white;
 
     /* Height/Width */
-    --header-height: 50px;
+    --header-title-height: 50px;
+    --header-nav-height: 50px;
 
     /* Padding/Margin */
     --padding-page: 10px;
