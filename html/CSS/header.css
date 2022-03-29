@@ -1,0 +1,51 @@
+header {
+    background-color: rgb(19, 19, 19);
+}
+
+.titre {
+    height: var(--header-title-height);
+    text-align: center;
+}
+h1 {
+    color: var(--color-header-text);
+}
+.pHeader {
+    color: var(--color-header-text);
+}
+
+nav {
+    margin-top: 10px;
+    height: var(--header-nav-height);
+}
+
+ul {
+    display: flex;
+    justify-content: space-evenly;
+
+    height: 100%;
+}
+
+li {
+    display: flex;
+    
+    width: 100%;
+    height: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+a:hover {
+    background-color: gray;
+    color: white;
+}
+a {
+    justify-content: center;
+    text-align: center;
+
+    line-height: var(--header-nav-height);
+    height: var(--header-nav-height);
+    width: 100%;
+
+    color: gray;
+
+    transition: background-color 0.5s;
+}

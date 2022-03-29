@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style-type: none;
+    color:#000000;
+}
+:root {
+    /* Couleurs */
+    --color-main: #341FFF;
+    --color-second:#1034E8;
+    --color-A: #AB12FF;
+    --color-B: #6110E8;
+    --color-E: #3864E8;
+    --color-header: #FFDAB9;
+    --color-nav: #FFD009;
+
+    --color-main-text: white;
+    --color-header-text: white;
+
+    /* Height/Width */
+    --header-title-height: 50px;
+    --header-nav-height: 50px;
+
+    /* Padding/Margin */
+    --padding-page: 10px;
+}
