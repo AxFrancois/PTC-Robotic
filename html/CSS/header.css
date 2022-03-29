@@ -6,7 +6,7 @@ header {
     height: var(--header-title-height);
     text-align: center;
 }
-h1 {
+.h1Header {
     color: var(--color-header-text);
 }
 .pHeader {
