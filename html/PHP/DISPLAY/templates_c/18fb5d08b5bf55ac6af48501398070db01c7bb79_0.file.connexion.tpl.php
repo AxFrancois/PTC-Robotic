@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2022-03-29 13:59:04
+/* Smarty version 3.1.39, created on 2022-03-29 14:14:44
   from '/var/www/html/TPL/connexion.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_6242f488a956d0_46726175',
+  'unifunc' => 'content_6242f834200dc5_19320469',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '18fb5d08b5bf55ac6af48501398070db01c7bb79' => 
     array (
       0 => '/var/www/html/TPL/connexion.tpl',
-      1 => 1648555142,
+      1 => 1648556078,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_6242f488a956d0_46726175 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6242f834200dc5_19320469 (Smarty_Internal_Template $_smarty_tpl) {
 ?><link rel="stylesheet" href="/CSS/page.css">
 <main>
     <div style="text-align:center">
@@ -109,13 +109,13 @@ function content_6242f488a956d0_46726175 (Smarty_Internal_Template $_smarty_tpl)
 
     <!--IMPORTANT: BE SURE YOU HONOR THIS JS LOAD ORDER-->
     <?php echo '<script'; ?>
- src="zip-full.min.js"><?php echo '</script'; ?>
+ src="/JS/zip.js-master/dist/zip-full.min.js"><?php echo '</script'; ?>
 >
     <?php echo '<script'; ?>
- src="JSPrintManager.js"><?php echo '</script'; ?>
+ src="/JS/JSPrintManager-master/scripts/JSPrintManager.js"><?php echo '</script'; ?>
 >
     <?php echo '<script'; ?>
- src="connexionRadio.js"><?php echo '</script'; ?>
+ src="/JS/connexionRadio.js"><?php echo '</script'; ?>
 >
 </main><?php }
 }

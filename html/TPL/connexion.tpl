@@ -81,7 +81,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 
     <!--IMPORTANT: BE SURE YOU HONOR THIS JS LOAD ORDER-->
-    <script src="zip-full.min.js"></script>
-    <script src="JSPrintManager.js"></script>
-    <script src="connexionRadio.js"></script>
+    <script src="/JS/zip.js-master/dist/zip-full.min.js"></script>
+    <script src="/JS/JSPrintManager-master/scripts/JSPrintManager.js"></script>
+    <script src="/JS/connexionRadio.js"></script>
 </main>
