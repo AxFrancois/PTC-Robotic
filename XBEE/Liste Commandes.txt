@@ -3,3 +3,5 @@ droite\r\n
 gauche\r\n
 avant\r\n
 arriere\r\n
+gffd\r\n
+sortie\r\n

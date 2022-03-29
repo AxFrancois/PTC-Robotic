@@ -46,6 +46,15 @@ La transmission du chemin se fera sous ce format : `gffd\r\n` où
 ### Contrôle de la pince
 TO DO
 
+### Autres fonctions/fonctions de test
+
+1. Activation haut parleur:
+
+Lorsque l'on veut activer le haut parleur, on transmet `haut parleur @\r\n` où @ représente un temps en seconde pendant lequel le robot émet le bruit.
+
+2. Gyrophare
+TO DO
+
 ## Transmissions depuis le robot vers l'IHM
 
 1. Detection d'obstacle
@@ -55,10 +64,27 @@ Pas de communication si rien n'est détecté.
 
 2. Notification de scan de QR Code
 
-Lorsque le robot scanne un QR Code, in transmet `QR @\r\n` où @ sera la donnée contenue par le QR Code.
+Lorsque le robot scanne un QR Code, il transmet `QR @\r\n` où @ sera la donnée contenue par le QR Code.
 
-3. Transmission de position
+3. Notification de scan de Code Barre
 
+Lorsque le robot scanne un Code Barre, il transmet `Barre @\r\n` où @ sera la donnée contenue par le Code Barre.
+
+4. Transmission de position
+
+TO DO
+
+5. Notification de sortie de ligne
+
+Lorsque le robot quitte la ligne (par exemple pour poser un objet ou éviter un obstacle), il transmet `sortie\r\n`
+
+5. Notification d'anomalie
+
+Lorsque le robot consate une anomalie, il transmet `erreur @\r\n`, où @ représente un code d'erreur parmis
+	- 100 : blocage
+	- 200 : surconsommation
+	- 300 : perdu (le robot est sorti de la ligne et ne la retrouve pas)
+	
 
 
 
