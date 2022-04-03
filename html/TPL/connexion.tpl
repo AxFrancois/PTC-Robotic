@@ -13,7 +13,7 @@
                 Baud Rate
                 <input id="baudRate" value="19200" />
             </label>
-            <button type="button" onclick="doOpen();">
+            <button>
                 Connexion
             </button>
         </div>
@@ -22,7 +22,7 @@
                 <strong>Commande</strong>
                 <input id="txtCommande" placeholder="Saisie de commandes" />
             </label>
-            <button onclick="SendRecieve();">Send...</button>
+            <button id="submit">Send...</button>
         </div>
         <hr />
         <div>
@@ -30,5 +30,10 @@
         </div>
     </div>
 
-    <script src="/JS/requestNode.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity=
+        "sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+        crossorigin="anonymous">
+    </script>
+    <script type="module" src="/JS/client/client.js"></script>
 </main>

@@ -1,14 +1,5 @@
 {
-    "name": "serial-comm",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "author": "",
-    "license": "ISC",
-    "devDependencies": {
-        "serialport": "^9.2.8"
-    }
+  "dependencies": {
+    "express": "^4.17.3"
+  }
 }
