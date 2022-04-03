@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.39, created on 2022-04-03 14:02:15
+/* Smarty version 3.1.39, created on 2022-04-03 16:29:22
   from '/var/www/html/TPL/connexion.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.39',
-  'unifunc' => 'content_62498cc795cef8_97585987',
+  'unifunc' => 'content_6249af42173275_74852058',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '18fb5d08b5bf55ac6af48501398070db01c7bb79' => 
     array (
       0 => '/var/www/html/TPL/connexion.tpl',
-      1 => 1648987329,
+      1 => 1648996038,
       2 => 'file',
     ),
   ),
@@ -20,9 +20,12 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_62498cc795cef8_97585987 (Smarty_Internal_Template $_smarty_tpl) {
+function content_6249af42173275_74852058 (Smarty_Internal_Template $_smarty_tpl) {
 ?><link rel="stylesheet" href="/CSS/page.css">
 <main>
+    <?php echo '<script'; ?>
+ defer src="/JS/client/app.js"><?php echo '</script'; ?>
+>
     <div style="text-align:center">
         <h1>Options de connexion</h1>
         <div>
@@ -52,16 +55,5 @@ function content_62498cc795cef8_97585987 (Smarty_Internal_Template $_smarty_tpl)
             <textarea id="txtDataReceived" readOnly style="background-color:#302a2a;color:#fff;font-family: 'Courier New', Courier, monospace;" cols="100" rows="10"></textarea>
         </div>
     </div>
-
-    <?php echo '<script'; ?>
- src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity=
-        "sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
-        crossorigin="anonymous">
-    <?php echo '</script'; ?>
->
-    <?php echo '<script'; ?>
- type="module" src="/JS/client/client.js"><?php echo '</script'; ?>
->
 </main><?php }
 }
