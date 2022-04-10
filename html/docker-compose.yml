@@ -1,0 +1,49 @@
+version: '3.1'
+
+services:
+#PostgreSQL
+  db:
+    container_name: "postgresql"
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: robotcpe
+      POSTGRES_PASSWORD: robotcpe
+      #volumes: "./PostgreSQL:/var/lib/postgresql/data"
+
+#PGAdmin4
+  pgadmin:
+    container_name: "pgadmin4"
+    image: dpage/pgadmin4:latest
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      PGADMIN_DEFAULT_EMAIL: robotcpe@cpe.fr
+      PGADMIN_DEFAULT_PASSWORD: robotcpe
+      PGADMIN_LISTEN_PORT: 5432
+
+#PHP Client
+  www:
+    container_name: "php"
+    build:
+      context: .
+      dockerfile: ./Web/Dockerfile  
+    ports:
+      - 3080:80
+    tty: true
+    #volumes:
+    #  - ./Web/src:/var/www/html
+
+#NodeJS server
+  node:
+    container_name: "nodejs"
+    build:
+      context: .
+      dockerfile: ./Node/Dockerfile
+    tty: true
+    ports:
+      - 8080:8080  
+      
+
+
