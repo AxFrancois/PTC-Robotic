@@ -3,7 +3,8 @@
     
     $smarty = new Smarty();
 
-    $smarty->assign('title', 'Robot - Connexion');
-    $smarty->assign('page', './connexion.tpl');
+    $smarty->assign('title', 'Robot - Debugger');
+    $smarty->assign('page', './debugger.tpl');
     $smarty->display('../../TPL/main_structure.tpl');
 ?>
+

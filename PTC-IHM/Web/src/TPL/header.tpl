@@ -13,19 +13,25 @@
             </li>
             <li>
                 <a href="#">
-                    Debug
+                    Contrôleur
+                </a>
+            </li>
+            <li>
+                <a href="/PHP/DISPLAY/debugger.php">
+                    Debugger
+                </a>
+            </li>
+            <li>
+                <a href="/PHP/DISPLAY/documentation.php">
+                    Documentation
                 </a>
             </li>
             <li>
                 <a href="#">
-                    Commandes
-                </a>
-            </li>
-            <li>
-                <a href="/PHP/DISPLAY/connexion.php">
-                    Connexion
+                    Bibliographie
                 </a>
             </li>
         </ul>
     </nav>
 </header>
+

@@ -9,7 +9,8 @@ services:
     environment:
       POSTGRES_USER: robotcpe
       POSTGRES_PASSWORD: robotcpe
-      #volumes: "./PostgreSQL:/var/lib/postgresql/data"
+    #volumes: 
+    #  - ./PostgreSQL:/var/lib/postgresql/data
 
 #PGAdmin4
   pgadmin:
@@ -23,17 +24,17 @@ services:
       PGADMIN_DEFAULT_PASSWORD: robotcpe
       PGADMIN_LISTEN_PORT: 5432
 
-#PHP Client
+#Web Client
   www:
-    container_name: "php"
+    container_name: "web"
     build:
       context: .
       dockerfile: ./Web/Dockerfile  
     ports:
       - 3080:80
     tty: true
-    #volumes:
-    #  - ./Web/src:/var/www/html
+    volumes:
+      - ./Web/src:/var/www/html
 
 #NodeJS server
   node:
@@ -43,7 +44,9 @@ services:
       dockerfile: ./Node/Dockerfile
     tty: true
     ports:
-      - 8080:8080  
-      
-
+      - 8080:8080 
+    volumes:
+      - ./Node/:/serveur/
+    devices:
+      - "/dev/ttyUSB0:/dev/ttyUSB0"
 

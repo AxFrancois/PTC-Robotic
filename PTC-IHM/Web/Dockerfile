@@ -19,12 +19,10 @@ RUN chown -R www-data:www-data /var/www/*
 RUN chmod -R ug+rw /var/www/*
 
 # Apache Permission
-RUN chmod 777 -R /var/www/
+RUN chmod 755 -R /var/www/
 # Smarty Permission
-RUN chmod 777 -R /usr/local/lib/
+RUN chmod 755 -R /usr/local/lib/
 
 # Affichage erreurs PHP
 #RUN sed -i 's/display_errors = Off/display_errors = On/g' /etc/php/7.4/apache2/php.ini
 #RUN systemctl reload apache2.service
-
-#CMD [ "php", "./index.php" ]
