@@ -1,12 +1,10 @@
 <?php
-    $host='localhost';
-    $dbname='robot';
-    $user='robotcpe';
-    $password='robotcpe';
-    try {
-        $db = new PDO('pgsql:host='.$host.';dbname='.$dbname.';user='.$user.';password='.$password);
-    } catch (PDOException $e) {
-        print("Erreur !: " . $e->getMessage() . "<br/>");
-        die();
-    }
+    require_once('/usr/local/lib/smarty3/Smarty.class.php');
+    
+    $smarty = new Smarty();
+
+    $smarty->assign('title', 'Robot - Documentation');
+    $smarty->assign('page', './documentation.tpl');
+    $smarty->display('../../TPL/main_structure.tpl');
 ?>
+
