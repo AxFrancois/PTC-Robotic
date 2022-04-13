@@ -1,12 +1,14 @@
 FROM node:17.8
 
-WORKDIR /serveur/src/
+WORKDIR /serveur/src 
 
-COPY /Node/package*.json /serveur/
+#COPY /Node/package*.json /serveur/src/
+
+COPY /Node /serveur/
 
 RUN npm install
 
-COPY /Node /serveur/
+WORKDIR /serveur/src 
 
 ENV PORT=8080
 

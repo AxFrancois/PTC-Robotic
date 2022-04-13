@@ -34,8 +34,8 @@ services:
       - 3080:80
     tty: true
     volumes:
-      - ./Web/src:/var/www/html
-      - no-copy:
+      - ./Web/src/:/var/www/html/
+      - /var/www/html/PHP/DISPLAY/templates_c
 
 #NodeJS server
   node:
@@ -46,8 +46,8 @@ services:
     tty: true
     ports:
       - 8080:8080 
-    #volumes:
-    #  - ./Node/:/serveur/
-    devices:
-      - "/dev/ttyUSB0:/dev/ttyUSB0"
-    
+    volumes:
+      - ./Node/src:/serveur/src
+    #devices:
+      #- "/dev/ttyUSB0:/dev/ttyUSB0"
+
