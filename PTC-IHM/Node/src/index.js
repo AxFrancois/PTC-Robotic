@@ -1,3 +1,10 @@
+/*
+* Code sources : 
+*   - https://www.bhuvaneswaran.com/serial-port-communication-with-node/
+*   - https://github.com/fireship-io/socketio-minimal-demo
+* 
+* Cherry-picking by Axel
+*/
 
 const http = require('http').createServer();
 
@@ -5,32 +12,40 @@ const io = require('socket.io')(http, {
     cors: { origin: "*" }
 });
 
+var SerialPort = require("serialport");
+var port = "/dev/ttyUSB0";
+var message = "gauche";
+
+var serialPort = new SerialPort(port, {
+  baudRate: 19200
+});
+
+
 io.on('connection', (socket) => {
-    console.log('a user connected');
+    initMessage = 'Connection succesfully established with communication program';
+    console.log(initMessage);
+    io.emit('message', `${initMessage}` );
 
     socket.on('message', (message) =>     {
-        console.log(message);
-        io.emit('message', `${socket.id.substr(0,2)} said ${message}` );   
+        console.log(`IHM : ${message}`);
+        serialPort.write(message, function(err) {
+            if (err) {
+                io.emit('message', `Communication error with serial port : ${err.message}` ); 
+                console.log("SP write error: ", err.message);
+                return 
+            }
+            console.log("SP send");
+            //attendre un message d'ack du robot
+        });
+    });
+
+    serialPort.on("open", function() {
+      serialPort.on("data", function(data) {
+        console.log("SP receive");
+        io.emit('message', `${data}` );
+        //attendre un message d'ack de l'ihm (ou pas ?)
+      });
     });
 });
 
 http.listen(8080, () => console.log('listening on http://localhost:8080') );
-
-
-// Regular Websockets
-
-// const WebSocket = require('ws')
-// const server = new WebSocket.Server({ port: '8080' })
-
-// server.on('connection', socket => { 
-
-//   socket.on('message', message => {
-
-//     socket.send(`Roger that! ${message}`);
-
-//   });
-
-// });
-
-
- 

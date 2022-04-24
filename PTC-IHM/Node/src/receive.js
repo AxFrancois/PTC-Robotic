@@ -11,5 +11,3 @@ serialPort.on("open", function() {
     console.log("Data received: " + data);
   });
 });
-
-//test
