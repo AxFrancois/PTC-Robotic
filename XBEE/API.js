@@ -1,22 +1,21 @@
 function API(message) {
-    switch(message) {
-       case "obstacle @\r\n":
-           // do somthing
-           break;
-       case "QR @\r\n":
-           // do somthing
-           break;
-       case "Barre @\r\n":
-           // do somthing
-           break;
-       case "sortie\r\n":
-           // do somthing
-           break;
-       case "erreur @\r\n":
-           // do somthing
-           break;
-       default:
-           // error case
-           break;
-   };
+   if (message.indexOf("obstacle") > -1){
+       var param = message.substring(9);
+       fctobstacle(param);
+   }
+   else if (message.indexOf("QR") > -1){
+       var param = message.substring(3);
+       fctQR(param);
+   }
+   else if (message.indexOf("Barre") > -1){
+       var param = message.substring(6);
+       fctBarre(param);
+   }
+   else if (message.indexOf("sortie") > -1){
+       fctsortie();
+   }
+   else if (message.indexOf("erreur") > -1){
+       var param = message.substring(7);
+       fcterreur(param);
+   }
 };

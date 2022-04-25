@@ -1,12 +1,12 @@
-stop\r\n
-droite\r\n
-gauche\r\n
-avant\r\n
-arriere\r\n
-gffd\r\n
-haut parleur @\r\n
-obstacle @\r\n
-QR @\r\n
-Barre @\r\n
-sortie\r\n
-erreur @\r\n
+stop
+droite
+gauche
+avant
+arriere
+trajet @
+hautparleur @
+obstacle @
+QR @
+Barre @
+sortie
+erreur @
