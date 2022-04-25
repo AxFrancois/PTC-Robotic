@@ -14,7 +14,8 @@ const io = require('socket.io')(http, {
 
 var SerialPort = require("serialport");
 var port = "/dev/ttyUSB0";
-var message = "gauche";
+//var message = "gauche";
+var initMessage = 'Connection succesfully established with communication program';
 
 var serialPort = new SerialPort(port, {
   baudRate: 19200
@@ -22,7 +23,6 @@ var serialPort = new SerialPort(port, {
 
 
 io.on('connection', (socket) => {
-    initMessage = 'Connection succesfully established with communication program';
     console.log(initMessage);
     io.emit('message', `${initMessage}` );
 

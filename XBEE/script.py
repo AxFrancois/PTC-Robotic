@@ -155,8 +155,8 @@ with open('API.js', 'w') as f:
             f.write("       fct"+x[0]+"();\n")
         else:
             f.write(
-                "       var param = message.substring({});\n".format(len(x[0])+1))
+                "       let param = message.substring({});\n".format(len(x[0])+1))
             f.write("       fct"+x[0]+"(param);\n")
         f.write("   }\n")
-    f.write("};")
+    f.write("}")
 f.close()
