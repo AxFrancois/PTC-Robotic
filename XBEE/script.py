@@ -72,7 +72,7 @@ with open('API.c', 'w') as f:
     f.write("       // error case\n")
     f.write("   }\n")
     f.write("return;\n")
-    f.write("};Z")
+    f.write("};")
 f.close()
 with open('API.h', 'w') as f:
     f.write("char* API(char* string);\n")

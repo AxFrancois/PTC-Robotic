@@ -31,4 +31,4 @@ char* API(char* string){
        // error case
    }
 return;
-};Z
+};
