@@ -1,6 +1,7 @@
 <?php
 
     require_once('/usr/local/lib/smarty3/Smarty.class.php');
+    require_once('../connexionDb.php');
     
     $smarty = new Smarty();
 

@@ -1,12 +1,26 @@
 <?php
-    $host='localhost';
-    $dbname='robot';
-    $user='robotcpe';
-    $password='robotcpe';
+    
+    $host='postgresql';
+    $dbname='postgres_db';
+    $user='admin';
+    $password='secret';
+    $port='5432';
+    //require_once 'config.php';
+    
     try {
-        $db = new PDO('pgsql:host='.$host.';dbname='.$dbname.';user='.$user.';password='.$password);
+        $dsn = "pgsql:host=$host;port=$port;dbname=$dbname;";
+        // make a database connection
+        $pdo = new PDO($dsn, $user, $password, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+
+        if ($pdo) {
+            echo "Connected to the $dbname database successfully!";
+        }
     } catch (PDOException $e) {
-        print("Erreur !: " . $e->getMessage() . "<br/>");
-        die();
+        die($e->getMessage());
+    } finally {
+        if ($pdo) {
+            $pdo = null;
+        }
     }
+
 ?>

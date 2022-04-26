@@ -1,5 +1,15 @@
 FROM php:7.4-apache
 
+# "could not find driver" -> https://lifesaver.codes/answer/can-t-install-pdo-psql-with-docker-php-ext-install-221
+RUN apt-get update
+
+# Install Postgre PDO
+RUN apt-get install -y libpq-dev \
+    && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
+    && docker-php-ext-install pdo pdo_pgsql pgsql
+
+RUN docker-php-ext-install mysqli
+
 COPY /Web/src/ /var/www/html/
 
 COPY /Web/lib/smarty3 /usr/local/lib/smarty3/
