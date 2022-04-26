@@ -34,6 +34,7 @@ io.on('connection', (socket) => {
                 console.log("SP write error: ", err.message);
                 return 
             }
+            io.emit('message',`${message}` );
             console.log("SP send");
             //attendre un message d'ack du robot
         });
