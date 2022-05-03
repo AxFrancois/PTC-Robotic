@@ -3,7 +3,7 @@
 ## Règles générales et syntaxe
 
 - Toutes les commandes utiliserons la syntaxe suivante : `commande`
-- La taille maximale d'une commande sera de **25 caractères maximum, `` compris**
+- La taille maximale d'une commande sera de **20 caractères maximum, `` compris**
 
 ## Transmissions depuis l'IHM vers le robot
 

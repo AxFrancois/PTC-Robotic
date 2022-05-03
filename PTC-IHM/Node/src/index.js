@@ -27,6 +27,9 @@ io.on('connection', (socket) => {
     io.emit('message', `${initMessage}` );
 
     socket.on('message', (message) =>     {
+		while (message.length < 20){	//20 = taille maximale d'un message d'après la documentation
+			message += ' ';
+		}
         console.log(`IHM : ${message}`);
         serialPort.write(message, function(err) {
             if (err) {
@@ -34,7 +37,7 @@ io.on('connection', (socket) => {
                 console.log("SP write error: ", err.message);
                 return 
             }
-            io.emit('message',`${message}` );
+            io.emit('message',`>> ${message}` );
             console.log("SP send");
             //attendre un message d'ack du robot
         });
@@ -43,7 +46,7 @@ io.on('connection', (socket) => {
     serialPort.on("open", function() {
       serialPort.on("data", function(data) {
         console.log("SP receive");
-        io.emit('message', `${data}` );
+        io.emit('message', `Robot > ${data}` );
         //attendre un message d'ack de l'ihm (ou pas ?)
       });
     });
