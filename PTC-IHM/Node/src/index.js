@@ -9,7 +9,7 @@
 const http = require('http').createServer();
 
 const io = require('socket.io')(http, {
-    cors: { origin: "*" }
+	cors: { origin: "*" }
 });
 
 var SerialPort = require("serialport");
@@ -18,38 +18,39 @@ var port = "/dev/ttyUSB0";
 var initMessage = 'Connection succesfully established with communication program';
 
 var serialPort = new SerialPort(port, {
-  baudRate: 19200
+	baudRate: 19200
 });
 
 
 io.on('connection', (socket) => {
-    console.log(initMessage);
-    io.emit('message', `${initMessage}` );
+	console.log(initMessage);
+	io.emit('message', `${initMessage}`);
 
-    socket.on('message', (message) =>     {
-		while (message.length < 20){	//20 = taille maximale d'un message d'après la documentation
+	//Send
+	socket.on('message', (message) => {
+		while (message.length < 20) {	//20 = taille maximale d'un message d'après la documentation
 			message += ' ';
 		}
-        console.log(`IHM : ${message}`);
-        serialPort.write(message, function(err) {
-            if (err) {
-                io.emit('message', `Communication error with serial port : ${err.message}` ); 
-                console.log("SP write error: ", err.message);
-                return 
-            }
-            io.emit('message',`>> ${message}` );
-            console.log("SP send");
-            //attendre un message d'ack du robot
-        });
-    });
+		console.log(`IHM : ${message}`);
+		serialPort.write(message, function (err) {
+			if (err) {
+				io.emit('message', `Communication error with serial port : ${err.message}`);
+				console.log("SP write error: ", err.message);
+				return
+			}
+			io.emit('message', `>> ${message}`);
+			console.log("SP send");
+			//attendre un message d'ack du robot
+		});
+	});
 
-    serialPort.on("open", function() {
-      serialPort.on("data", function(data) {
-        console.log("SP receive");
-        io.emit('message', `Robot > ${data}` );
-        //attendre un message d'ack de l'ihm (ou pas ?)
-      });
-    });
+	//Receive
+	serialPort.on("data", function (data) {
+		console.log("SP receive");
+		io.emit('message', `Robot > ${data}`);
+		//attendre un message d'ack de l'ihm (ou pas ?)
+	});
 });
 
-http.listen(8080, () => console.log('listening on http://localhost:8080') );
+
+http.listen(8080, () => console.log('listening on http://localhost:8080'));

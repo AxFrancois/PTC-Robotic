@@ -1,13 +1,13 @@
 var SerialPort = require("serialport");
-var port = "COM2";
+var port = "/dev/ttyUSB0";
 
 var serialPort = new SerialPort(port, {
-  baudRate: 9600
+	baudRate: 19200
 });
 
-serialPort.on("open", function() {
-  console.log("-- Connection opened --");
-  serialPort.on("data", function(data) {
-    console.log("Data received: " + data);
-  });
+serialPort.on("open", function () {
+	console.log("-- Connection opened --");
+	serialPort.on("data", function (data) {
+		console.log("Data received: " + data);
+	});
 });
