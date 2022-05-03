@@ -41,8 +41,9 @@ create table EMPLACEMENT  (
 /* Table : RAYON                                                */
 /*==============================================================*/
 create table RAYON  (
-	ID_RAYON		INTEGER	not null,
-	VALEUR			CHAR(5)	not null,
+	ID_RAYON	INTEGER	not null,
+	LABEL		VARCHAR(100)	not null,
+	VALEUR		CHAR(5)	not null,
 	constraint ID_RAYON_PK primary key (ID_RAYON)
 );
 
@@ -62,4 +63,17 @@ Create sequence RAYON_SEQ OWNED BY rayon.id_rayon;
 
 -- Init insert
 INSERT INTO COMMANDE (ID_COMMANDE, COMMANDE, DESCRIPTION) VALUES
-	(Nextval('ID_COMMANDE'), 'avancer', 'fait rouler le robot en avant.');
+	(Nextval('ID_COMMANDE'), 'stop', 'stopper toutes actions de mouvements');
+INSERT INTO COMMANDE (ID_COMMANDE, COMMANDE, DESCRIPTION) VALUES
+	(Nextval('ID_COMMANDE'), 'avancer', 'rouler en avant');
+INSERT INTO COMMANDE (ID_COMMANDE, COMMANDE, DESCRIPTION) VALUES
+	(Nextval('ID_COMMANDE'), 'arriere', 'rouler en arriere');
+INSERT INTO COMMANDE (ID_COMMANDE, COMMANDE, DESCRIPTION) VALUES
+	(Nextval('ID_COMMANDE'), 'droite', 'tourner vers la droite');
+INSERT INTO COMMANDE (ID_COMMANDE, COMMANDE, DESCRIPTION) VALUES
+	(Nextval('ID_COMMANDE'), 'gauche', 'tourner vers la gauche');
+INSERT INTO COMMANDE (ID_COMMANDE, COMMANDE, DESCRIPTION) VALUES
+	(Nextval('ID_COMMANDE'), 'rayon @', 'envoie la valeur du QRcode du rayon @');
+
+
+
