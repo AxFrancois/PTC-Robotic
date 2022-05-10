@@ -10,10 +10,10 @@
     try {
         $dsn = "pgsql:host=$host;port=$port;dbname=$dbname;";
         // make a database connection
-        $pdo = new PDO($dsn, $user, $password, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+        $db = new PDO($dsn, $user, $password, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 
-        if ($pdo) {
-            echo "Connected to the $dbname database successfully!";
+        if ($db) {
+            // console.log("Connected to the $dbname database successfully!");
         }
     } catch (PDOException $e) {
         die($e->getMessage());

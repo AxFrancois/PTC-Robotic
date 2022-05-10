@@ -12,8 +12,8 @@
                 </a>
             </li>
             <li>
-                <a href="#">
-                    Contrôleur
+                <a href="/PHP/DISPLAY/configuration.php">
+                    Configuration
                 </a>
             </li>
             <li>

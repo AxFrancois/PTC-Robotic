@@ -1,12 +1,16 @@
 <link rel="stylesheet" href="/CSS/page.css">
 <link rel="stylesheet" href="/CSS/debugger.css">
 <main>
-    <script defer src="/JS/client/app.js"></script>
     <div class="commands_list">
         <h1>Liste des commandes</h1>
-        <ul>
-
-        </ul>
+        <table>
+            {foreach $cmds as $cmd}
+                <tr>
+                    <td>{$cmd['commande']}</td>
+                    <td>{$cmd['description']}</td>
+                </tr>
+            {/foreach}
+        </table>
     </div>
     <div class="terminal">
         <h1>Terminal</h1>
@@ -23,3 +27,4 @@
     </div>
 </main>
 
+<script defer src="/JS/client/app.js"></script>
