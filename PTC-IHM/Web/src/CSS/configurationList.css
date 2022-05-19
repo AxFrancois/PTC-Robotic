@@ -1,0 +1,29 @@
+.mainConfig {
+    display: flex;
+    flex-direction: row;
+}
+
+.displayer {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.displayer > div{
+    margin: 50px;
+}
+
+.QRcodeSection {
+    display: flex;
+    flex-direction: row;
+}
+.CodeBarreSection {
+    display: flex;
+    flex-direction: row;
+}
+
+.listQRcode {
+    display: flex;
+    flex-direction: column;
+}

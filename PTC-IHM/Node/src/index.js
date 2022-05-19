@@ -28,9 +28,11 @@ io.on('connection', (socket) => {
 
 	//Send
 	socket.on('message', (message) => {
-		while (message.length < 20) {	//20 = taille maximale d'un message d'après la documentation
+		
+		while (message.length < 8) {	//20 = taille maximale d'un message d'après la documentation
 			message += ' ';
 		}
+		
 		console.log(`IHM : ${message}`);
 		serialPort.write(message, function (err) {
 			if (err) {
