@@ -1,7 +1,7 @@
 import RPi.GPIO as IO
 import time
 import serial
-#import QrTest.py
+import CodeReader from QrTest
 
 #--------------UART init-------------------------------------
 ser = serial.Serial(
@@ -20,37 +20,54 @@ IO.setmode(IO.BCM)
 IO.setup(2,IO.IN) #GPIO 2 -> Left IR out
 IO.setup(3,IO.IN) #GPIO 3 -> Right IR out
 
-# IO.setup(4,IO.OUT) #GPIO 4 -> Motor 1 terminal A
-# IO.setup(22,IO.OUT) #GPIO 22 -> Motor 1 terminal B
-# IO.setup(17,IO.OUT) #GPIO 17 -> Motor Left terminal A
-# IO.setup(18,IO.OUT) #GPIO 18 -> Motor Left terminal B
-
 #--------------Main------------------------------------------
-
+tourne = False
+reader = True
 while 1:
 
     if(IO.input(2)==True and IO.input(3)==True):    #move forward     
+        tourne = False
+        reader = True
         print('sending Forward')
-        data = 'F'
+        data = 'F0000000'
         ser.write(str(data).encode())
-        time.sleep(0.5) 
+        time.sleep(0.1) 
 
     elif(IO.input(2)==False and IO.input(3)==True): #turn right  
+        tourne = True
+        reader = True
         print('sending Right')
-        data = 'R'
+        data = 'R0000000'
+        data2 = data
         ser.write(str(data).encode())
-        time.sleep(0.5)  
+        time.sleep(0.1)  
 
     elif(IO.input(2)==True and IO.input(3)==False): #turn left
+        tourne = True
+        reader = True
         print('sending Left')
-        data = 'L'
+        data = 'L0000000'
+        data2 = data
         ser.write(str(data).encode())
-        time.sleep(0.5)  
+        time.sleep(0.1)  
 
     else:                                           #stay still
-        print('sending Stop')
-        data = 'S'
-        ser.write(str(data).encode())
-        time.sleep(0.5)
+        if (tourne == False and reader == True):
+                print('sending Stop')
+                data = 'S0000000'
+                res = CodeReader()
+                ser.write(str(data).encode())
+                time.sleep(0.1)
+                ser.write(str(res).encode())
+                time.sleep(0.1)
+        if (tourne == False and reader == False):
+                print('sending Stop but no QR')
+                data = 'S0000000'
+                ser.write(str(data).encode())
+                time.sleep(0.1)
+        else :
+                print('Jump')
+                ser.write(str(data2).encode())
+                time.sleep(0.1)
     
     
