@@ -53,6 +53,7 @@ while 1:
 
     else:                                           #stay still
         if (tourne == False and reader == True):
+                reader = False
                 print('sending Stop')
                 data = 'S0000000'
                 res = CodeReader()
