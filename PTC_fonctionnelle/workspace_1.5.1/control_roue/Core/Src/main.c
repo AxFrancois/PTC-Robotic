@@ -112,14 +112,6 @@ static void MX_USART1_UART_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
-int _write(int file, char *ptr, int len)
-{
-	int i=0;
-	for (i=0; i<len; i++){
-		ITM_SendChar((*ptr++));}
-	return len;
-
-}
 
 void HAL_GPIO_EXTI_Callback( uint16_t GPIO_Pin)
 {
@@ -180,22 +172,19 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 				HAL_UART_Receive_IT(&huart5, Receive_IHM2, 8);// Sending in normal mode
 			}
 		}
+    if (start ==0){
+      if (strlen((char *)Receive_IHM3)!=0){
+        uint8_t resTransmit[] = "command false";
+        if (strncmp((char *) Receive_IHM3,"start@",5)==0){
+          uint8_t resTransmit[] = "article#c366ef9e";
+          strcpy((char *)Receive_reel3,(char *)resTransmit);
+          start = 1;
+          HAL_UART_Transmit(&huart1,Receive_reel3,strlen((char *)Receive_reel3),100);// Sending in normal mode
+          HAL_UART_Receive_IT(&huart1, Receive_IHM3, 20);// Sending in normal mode
 
-		if (strlen((char *)Receive_IHM3)!=0){
-			uint8_t resTransmit[] = "command false";
-			if (strncmp((char *) Receive_IHM3,"start@",5)==0){
-				uint8_t resTransmit[] = "article#c366ef9e";
-				strcpy((char *)Receive_reel3,(char *)resTransmit);
-				start = 1;
-				HAL_UART_Transmit(&huart1,Receive_reel3,strlen((char *)Receive_reel3),100);// Sending in normal mode
-				HAL_UART_Receive_IT(&huart1, Receive_IHM3, 20);// Sending in normal mode
-
-			}
-			if (strncmp((char *) Receive_IHM3,"rayon#@",6)==0){
-				slice_str((char *)Receive_IHM3, param, 7, strlen((char *)Receive_IHM));
-				strcpy((char *)Receive_rayon,(char *)param);
-			}
-		}
+        }
+      }
+    }
 	}
 	if (obstacle_detecte==2){
 		if (strlen((char *)Receive_IHM2)!=0){
@@ -206,8 +195,8 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 
 			HAL_UART_Transmit(&huart4,Receive_reel2,strlen((char *)Receive_reel2),100);// Sending in normal mode
 			HAL_UART_Receive_IT(&huart5, Receive_IHM2, 8);// Sending in normal mode
-	}
-}
+	  }
+  }
 }
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim)
@@ -248,24 +237,6 @@ void servomoteur(void){
 
 }
 
-void commande_roue(int Radio){
-	int avant=strcmp((char*)Radio,"avant\r");
-	int droite=strcmp((char*)Radio,"droite\r");
-	int gauche=strcmp((char*)Radio,"gauche\r");
-	if (avant == 0) {
-		uint8_t Test[] = "mogo 1:10 2:10\r"; //Data to send
-		HAL_UART_Transmit(&huart4,Test,strlen((char *)Test),100);// Sending in normal mode
-	}
-	if (droite == 0) {
-			uint8_t Test[] = "mogo 1:10\r"; //Data to send
-			HAL_UART_Transmit(&huart4,Test,strlen((char *)Test),100);// Sending in normal mode
-		}
-	if (gauche == 0) {
-			uint8_t Test[] = "mogo 2:10\r"; //Data to send
-			HAL_UART_Transmit(&huart4,Test,strlen((char *)Test),100);// Sending in normal mode
-		}
-
-}
 
 void contournement(void){
 
@@ -364,27 +335,6 @@ void contournement(void){
 	}
 }
 
-int capteur_US(void){
-	HAL_GPIO_WritePin(TRIG_PORT, TRIG_PIN, GPIO_PIN_SET);  // pull the TRIG pin HIGH
-	__HAL_TIM_SET_COUNTER(&htim1, 0);
-	while (__HAL_TIM_GET_COUNTER (&htim1) < 10);  // wait for 10 us
-	HAL_GPIO_WritePin(TRIG_PORT, TRIG_PIN, GPIO_PIN_RESET);  // pull the TRIG pin low
-
-	pMillis = HAL_GetTick(); // used this to avoid infinite while loop  (for timeout)
-	// wait for the echo pin to go high
-	while (!(HAL_GPIO_ReadPin (ECHO_PORT, ECHO_PIN)) && pMillis + 10 >  HAL_GetTick());
-	Value1 = __HAL_TIM_GET_COUNTER (&htim1);
-
-	pMillis = HAL_GetTick(); // used this to avoid infinite while loop (for timeout)
-	// wait for the echo pin to go low
-	while ((HAL_GPIO_ReadPin (ECHO_PORT, ECHO_PIN)) && pMillis + 50 > HAL_GetTick());
-	Value2 = __HAL_TIM_GET_COUNTER (&htim1);
-
-	Distance = (Value2-Value1)* 0.034/2;
-	HAL_Delay(100);
-
-	return(Distance);
-}
 /* USER CODE END 0 */
 
 /**
