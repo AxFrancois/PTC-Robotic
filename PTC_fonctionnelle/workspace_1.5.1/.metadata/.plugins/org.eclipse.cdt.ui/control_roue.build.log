@@ -1,0 +1,24 @@
+12:25:30 **** Incremental Build of configuration Debug for project control_roue ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F303xC -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc -I../Drivers/STM32F3xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F3xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'HAL_UART_RxCpltCallback':
+../Core/Src/main.c:185:12: warning: unused variable 'resTransmit' [-Wunused-variable]
+    uint8_t resTransmit[] = "command false";
+            ^~~~~~~~~~~
+arm-none-eabi-gcc -o "control_roue.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\PTC_fonctionnelle\workspace_1.5.1\control_roue\STM32F303VCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="control_roue.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: control_roue.elf
+ 
+arm-none-eabi-objdump -h -S  control_roue.elf  > "control_roue.list"
+arm-none-eabi-objcopy  -O binary  control_roue.elf  "control_roue.bin"
+arm-none-eabi-size   control_roue.elf 
+   text	   data	    bss	    dec	    hex	filename
+  31852	     24	   2488	  34364	   863c	control_roue.elf
+Finished building: default.size.stdout
+ 
+Finished building: control_roue.bin
+ 
+Finished building: control_roue.list
+ 
+
+12:25:31 Build Finished. 0 errors, 1 warnings. (took 793ms)
+
